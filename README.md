@@ -1,4 +1,3 @@
-# grainbank_image_slicer
 # Image Slicer Project
 
 상세페이지와 같이 세로로 긴 이미지를 논리적 구간별로 자동 분할하는 프로그램입니다.
@@ -13,22 +12,21 @@
 - `img/`: 입력 및 출력 이미지 저장소 (`img/output/`에 결과물 저장)
 - `docs/`: 프로젝트 명세 및 기술 문서
 
-## 사용 방법
-1.  **필수 패키지 설치**
-    ```bash
-    pip install -r requirements.txt
-    ```
+## 🚀 Streamlit 웹 대시보드 (그레인뱅크 전용)
+로컬 환경뿐만 아니라 **Streamlit Cloud**에 배포하여 웹 브라우저에서 바로 사용할 수 있는 대시보드 기능을 제공합니다.
 
-2.  **프로그램 실행**
-    ```bash
-    python src/slicer.py [이미지_경로] --output img/output
-    ```
+### 실행 방법 (로컬)
+```bash
+streamlit run src/app.py
+```
 
-3.  **옵션**
-    - `--min_h`: 슬라이스의 최소 높이 (기본 500px)
-    - `--gap`: 구분선 최소 두께 (기본 10px)
-    - `--var`: 배경 감지 감도 (낮을수록 엄격하게 감지, 기본 1.0)
+### Streamlit 배포 시 필수 파일 (Git 업로드 항목)
+1.  **`src/app.py`**: 웹 대시보드 인터페이스 코드
+2.  **`src/slicer.py`**: 이미지 분석 로직 (app.py에서 참조)
+3.  **`requirements.txt`**: 의존성 라이브러리 목록 (`streamlit`, `pillow`, `numpy`)
+4.  **`README.md`**: 프로젝트 설명
 
-## 결과 확인
-`img/output/` 폴더에 순차적으로 번호가 매겨진 PNG 파일들이 생성됩니다.
-
+### 배포 절차 (Streamlit Cloud 기준)
+1.  GitHub 저장소에 위 파일들을 업로드합니다.
+2.  [Streamlit Cloud](https://share.streamlit.io/)에 로그인 후 **"New app"**을 클릭합니다.
+3.  저장소를 선택하고 `Main file path`를 `src/app.py`로 설정하여 배포합니다.
